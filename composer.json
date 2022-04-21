@@ -1,0 +1,27 @@
+{  
+   "name": "julien-its/emails-queue-s6",
+   "type": "symfony-bundle",
+   "description": "Symfony Easy Emails Queue Bundle for symfony 6",
+   "keywords": [],
+   "license": "GPL-3.0+",
+   "authors":[  
+      {  
+         "name": "Julien IT Solutions",
+         "email":"contact@julien-gustin.be",
+         "homepage": "http://www.julien-gustin.be"
+      }
+   ],
+   "require":{
+      "php": ">=8.0.2",
+      "symfony/framework-bundle": "6.0.*",
+      "doctrine/doctrine-bundle": "^2.5",
+      "doctrine/orm": "^2.11",
+      "symfony/mailer": "6.0.*"
+   },
+   "autoload":{  
+      "psr-0":{  
+         "JulienIts\\EmailsQueueBundle": ""
+      }
+   },
+   "target-dir":"JulienIts/EmailsQueueBundle"
+}
