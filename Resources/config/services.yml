@@ -14,11 +14,14 @@ services:
         tags:
             - { name: 'console.command', command: 'jits:queue:process' }
 
-    JulienIts\Repository\EmailContextRepository:
+    JulienIts\EmailsQueueBundle\Repository\EmailContextRepository:
+        autowire: true
         tags: [ 'doctrine.repository_service' ]
 
-    JulienIts\Repository\EmailQueueRepository:
+    JulienIts\EmailsQueueBundle\Repository\EmailQueueRepository:
+        autowire: true
         tags: [ 'doctrine.repository_service' ]
 
-    JulienIts\Repository\EmailSentRepository:
+    JulienIts\EmailsQueueBundle\Repository\EmailSentRepository:
+        autowire: true
         tags: [ 'doctrine.repository_service' ]
