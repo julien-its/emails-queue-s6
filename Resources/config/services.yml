@@ -13,3 +13,12 @@ services:
         public: true
         tags:
             - { name: 'console.command', command: 'jits:queue:process' }
+
+    JulienIts\Repository\EmailContextRepository:
+        tags: [ 'doctrine.repository_service' ]
+
+    JulienIts\Repository\EmailQueueRepository:
+        tags: [ 'doctrine.repository_service' ]
+
+    JulienIts\Repository\EmailSentRepository:
+        tags: [ 'doctrine.repository_service' ]
