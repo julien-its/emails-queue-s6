@@ -10,12 +10,30 @@ Define how many emails you want to send each time you call the process queue act
 
 ### Installation
 
-
 Install with composer
+
+Before installation :
+
+Add in your composer.json
+
+```sh
+"extra": {
+  "symfony": {
+     "endpoint": [
+        "https://api.github.com/repos/julien-its/symfony-recipes/contents/index.json",
+        "flex://defaults"
+     ]
+  }
+}
+```
+The extra.symfony key will most probably already exist in your composer.json. In that case, add the "endpoint" key to the existing extra.symfony entry.
+
+You can now install it via composer
 
 ```sh
 $ composer require julien-its/emails-queue-s6
 ```
+
 
 ### Instructions
 

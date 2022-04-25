@@ -17,5 +17,13 @@ class EmailsQueueExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yml');
+
+        // Define package parameters config when install the bundle
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $container->setParameter('emails_queue.mode', $config['mode']);
+        $container->setParameter('emails_queue.debug_to', $config['debug_to']);
+        $container->setParameter('emails_queue.debug_cc', $config['debug_cc']);
     }
 }

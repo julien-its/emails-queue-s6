@@ -1,0 +1,4 @@
+emails_queue:
+  mode: '%env(EMAILS_QUEUE_MODE)%'
+  debug_to: '%env(EMAILS_QUEUE_DEBUG_TO)%'
+  debug_cc: '%env(EMAILS_QUEUE_DEBUG_CC)%'
