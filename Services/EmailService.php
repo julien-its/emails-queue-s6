@@ -5,6 +5,7 @@ namespace JulienIts\EmailsQueueBundle\Services;
 use Doctrine\ORM\EntityManagerInterface;
 use JulienIts\EmailsQueueBundle\Entity\EmailContext;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class EmailService
 {
@@ -12,18 +13,21 @@ class EmailService
     protected RouterInterface $router;
     protected \Twig\Environment $twig;
     protected EmailsQueueService $emailsQueueService;
+    protected ParameterBagInterface $param;
 
     public function __construct(
         EntityManagerInterface $em,
         RouterInterface $router,
         \Twig\Environment $twig,
-        EmailsQueueService $emailsQueueService
+        EmailsQueueService $emailsQueueService,
+        ParameterBagInterface $param
     )
     {
         $this->em = $em;
 		$this->router = $router;
 		$this->twig = $twig;
         $this->emailsQueueService = $emailsQueueService;
+        $this->param = $param;
     }
 
     public function createNewAndProcess($config)
