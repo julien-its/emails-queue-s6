@@ -77,7 +77,7 @@ class EmailService
                     $emailQueue->setEmailTo('info@'.gethostname());
                 }
                 if(!empty($this->param->get('emails_queue.debug_cc'))){
-                    $emailQueue->setEmailsBcc($this->param->get('emails_queue.debug_cc'));
+                    $emailQueue->setEmailsCc($this->param->get('emails_queue.debug_cc'));
                 }
                 $body = $emailQueue->getBody() ;
                 $body .= PHP_EOL . PHP_EOL . PHP_EOL
