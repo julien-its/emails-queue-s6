@@ -38,7 +38,7 @@ class EmailService
 
 	public function createNew($config)
 	{
-        try{
+
             if(key_exists('emailHtml', $config)){
                 $emailHtml = $config['emailHtml'];
             }else{
@@ -98,8 +98,6 @@ class EmailService
 
             $this->em->persist($emailQueue);
             $this->em->flush();
-        }catch(\Exception $e){
-            //echo $e->getMessage();die;
-        }
+
 	}
 }
