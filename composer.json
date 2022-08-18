@@ -13,7 +13,7 @@
    ],
    "require":{
       "php": ">=8.0.2",
-      "symfony/framework-bundle": "6.0.*",
+      "symfony/framework-bundle": "^6.0",
       "doctrine/doctrine-bundle": "^2.5",
       "doctrine/orm": "^2.11",
       "symfony/mailer": "6.0.*"
