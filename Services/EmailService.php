@@ -99,7 +99,7 @@ class EmailService
             $this->em->persist($emailQueue);
             $this->em->flush();
         }catch(\Exception $e){
-            echo $e->getMessage();die;
+            //echo $e->getMessage();die;
         }
 	}
 }
