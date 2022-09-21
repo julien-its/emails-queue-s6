@@ -53,14 +53,14 @@ class EmailSent
     /**
      * @var string
      *
-     * @ORM\Column(name="emailsBcc", type="string", length=250, nullable=true)
+     * @ORM\Column(name="emailsBcc", type="string", length=1000, nullable=true)
      */
     private $emailsBcc;
 	
     /**
      * @var string
      *
-     * @ORM\Column(name="emailsCc", type="string", length=250, nullable=true)
+     * @ORM\Column(name="emailsCc", type="string", length=1000, nullable=true)
      */
     private $emailsCc;
     
