@@ -14,7 +14,6 @@ class EmailsQueueService
     //const WHITE_LIST_ENABLE = false;
     protected EntityManagerInterface $em;
     protected MailerInterface $mailer;
-    protected $appMode;
 
     public function __construct(EntityManagerInterface $em, MailerInterface $mailer)
     {
