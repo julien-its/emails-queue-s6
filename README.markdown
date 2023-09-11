@@ -73,6 +73,13 @@ $ php bin/console doctrine:migration:migrate
                 'subject' => self::DEFAULT_SUBJECT.' : Contact',
                 'emailTo' => 'toemail@to.com',
                 'emailsBcc' => 'contact@from.com;email2@email.com'
+                'attachments' => [
+                    [
+                        'filePath' => $eventIcsFilePath,
+                        'fileName' => 'event.ics',
+                        'delete' => true
+                    ]
+                ]
             );
     		$this->jitsEmailService->createNewAndProcess($config);
     	}

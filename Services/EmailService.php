@@ -96,6 +96,11 @@ class EmailService
             $emailQueue->setBodyText($emailText);
         }
 
+        // add attachments
+        if(isset($config['attachments']) && !empty($config['attachments'])){
+            $emailQueue->setAttachments($config['attachments']);
+        }
+
         $this->em->persist($emailQueue);
         $this->em->flush();
 

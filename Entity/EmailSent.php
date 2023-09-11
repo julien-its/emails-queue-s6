@@ -97,6 +97,11 @@ class EmailSent
      * @ORM\JoinColumn(name="contextId", referencedColumnName="id")
      */
     private $context;
+
+    /**
+     * @ORM\Column(name="attachments", type="json", nullable=true)
+     */
+    private $attachments;
 	
 	
 	/**
@@ -412,5 +417,17 @@ class EmailSent
     public function getBodyText()
     {
         return $this->bodyText;
+    }
+
+    public function getAttachments(): ?array
+    {
+        return $this->attachments;
+    }
+
+    public function setAttachments(?array $attachments): static
+    {
+        $this->attachments = $attachments;
+
+        return $this;
     }
 }

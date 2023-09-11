@@ -7,7 +7,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface;
-
+use Symfony\Component\Mime\Part\DataPart;
+use Symfony\Component\Mime\Part\File;
 
 class EmailsQueueService
 {
@@ -49,6 +50,13 @@ class EmailsQueueService
             $message->text($emailQueue->getBodyText(),'text/plain');
         }
 
+        // add attachments
+        if(!empty($emailQueue->getAttachments())){
+            foreach($emailQueue->getAttachments() as $attachment){
+                $message->addPart(new DataPart(new File($attachment['filePath']), $attachment['fileName']));
+            }
+        }
+
         // Add CC from the emailQueue entity
         if($emailQueue->getEmailsCc() != null){
             $arrEmails = explode(';', $emailQueue->getEmailsCc());
@@ -74,6 +82,15 @@ class EmailsQueueService
         }
 
         $this->mailer->send($message);
+
+        // delete attachments files
+        if(!empty($emailQueue->getAttachments())){
+            foreach($emailQueue->getAttachments() as $attachment){
+                if(key_exists('delete', $attachment) && $attachment['delete']){
+                    unlink($attachment['filePath']);
+                }
+            }
+        }
     }
 
     private function _setEmailQueueToSent(EmailQueue $emailQueue)
@@ -92,6 +109,7 @@ class EmailsQueueService
         $emailSent->setEmailsBcc($emailQueue->getEmailsBcc());
         $emailSent->setEmailsCc($emailQueue->getEmailsCc());
         $emailSent->setReplyTo($emailQueue->getReplyTo());
+        $emailSent->setAttachments($emailQueue->getAttachments());
 
         $this->em->persist($emailSent);
         $this->em->remove($emailQueue);
